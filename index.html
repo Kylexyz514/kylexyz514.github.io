@@ -1,52 +1,42 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ma Plateforme Publicitaire</title>
-  <!-- Lien vers le fichier CSS -->
+  <title>AdSphere</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- Menu de navigation -->
   <nav>
-    <a href="index.html">Accueil</a>
-    <a href="about.html">À propos</a>
+    <a href="index.html">Home</a>
+    <a href="ads.html">Ads Library</a>
     <a href="contact.html">Contact</a>
   </nav>
 
   <!-- Contenu principal -->
   <main>
-    <h1>Bienvenue sur Ma Plateforme Publicitaire</h1>
-    <p>Ceci est une plateforme innovante pour héberger et gérer des publicités.</p>
+    <h1>Welcome to AdSphere</h1>
+    <p>Your ultimate platform for managing and hosting ads effectively.</p>
 
-    <!-- Bouton interactif -->
-    <button onclick="toggleContent()">Afficher plus</button>
-    <div id="content" style="display:none;">
-      <p>Voici des détails supplémentaires sur notre plateforme :</p>
-      <ul>
-        <li>Nous collaborons avec des géants comme Google Ads et Facebook Ads.</li>
-        <li>Notre plateforme offre une visibilité optimale pour vos campagnes.</li>
-        <li>Contactez-nous pour plus d'informations !</li>
-      </ul>
+    <!-- Message interactif -->
+    <button onclick="showLibraryInfo()">Learn More</button>
+    <div id="info" style="display:none;">
+      <p>AdSphere offers a dedicated library to organize your ads efficiently. Explore our platform for seamless ad management!</p>
     </div>
   </main>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 - Ma Plateforme Publicitaire. Tous droits réservés.</p>
+    <p>&copy; 2025 AdSphere. All rights reserved.</p>
   </footer>
 
-  <!-- Script JavaScript pour le bouton interactif -->
+  <!-- Script JavaScript -->
   <script>
-    function toggleContent() {
-      const content = document.getElementById('content');
-      if (content.style.display === 'none') {
-        content.style.display = 'block';
-      } else {
-        content.style.display = 'none';
-      }
+    function showLibraryInfo() {
+      const info = document.getElementById('info');
+      info.style.display = info.style.display === 'none' ? 'block' : 'none';
     }
   </script>
 </body>
-</html
+</html>
