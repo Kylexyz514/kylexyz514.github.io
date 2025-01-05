@@ -3,35 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ads Library - AdSphere</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Ads - AdSphere</title>
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="ads.html">Watch Ads</a>
-  </nav>
+  <h1>Ads Library</h1>
+  <p>Discover ads from our trusted partners below:</p>
 
-  <main>
-    <h1>Ads Library</h1>
-    <p>Discover ads from our trusted partners below:</p>
-
-    <!-- Liste des publicités -->
-    <ul id="adsList">
-      <!-- Les publicités seront affichées ici -->
-    </ul>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 AdSphere. All rights reserved.</p>
-  </footer>
+  <ul id="adsList">
+    <!-- Les publicités seront affichées ici -->
+  </ul>
 
   <script>
     // Récupérer les publicités du localStorage
     const ads = JSON.parse(localStorage.getItem("ads")) || [];
     const adsList = document.getElementById("adsList");
 
-    // Afficher les publicités dans la liste
+    // Afficher chaque publicité
     ads.forEach((ad, index) => {
       const li = document.createElement("li");
       li.innerHTML = `<strong>${index + 1}.</strong> <a href="${ad.url}" target="_blank">${ad.title}</a>`;
