@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Platforme d'hébergement de publicités">
+  <title>Ma Plateforme Publicitaire</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background-color: #f4f4f9;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+    }
+    .ad-container {
+      margin: 20px auto;
+      padding: 10px;
+      border: 1px solid #ddd;
+      background: #fff;
+      max-width: 600px;
+    }
+    footer {
+      margin-top: 30px;
+      background-color: #333;
+      color: white;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bienvenue sur ma plateforme publicitaire</h1>
+    <p>Votre espace pour héberger des publicités.</p>
+  </header>
+
+  <main>
+    <div class="ad-container">
+      <h3>Publicité</h3>
+      <!-- Insère le code AdSense ici -->
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Ma Plateforme Publicitaire. Tous droits réservés.</p>
+  </footer>
+</body>
+</html>
+
