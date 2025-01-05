@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - AdSphere</title>
+</head>
+<body>
+  <h1>Admin Panel</h1>
+  <form id="adForm">
+    <label for="title">Ad Title:</label>
+    <input type="text" id="title" required>
+    <br><br>
+    <label for="url">Ad URL:</label>
+    <input type="url" id="url" required>
+    <br><br>
+    <button type="submit">Add Ad</button>
+  </form>
+
+  <script>
+    // Sélection du formulaire
+    const adForm = document.getElementById("adForm");
+
+    // Fonction qui s'exécute lorsque le formulaire est soumis
+    adForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      // Récupérer les valeurs du formulaire
+      const title = document.getElementById("title").value;
+      const url = document.getElementById("url").value;
+
+      // Vérifier si les valeurs sont valides
+      if (title && url) {
+        // Sauvegarder les données dans le fichier JSON (pour l'instant dans localStorage)
+        saveAdToLocalStorage(title, url);
+      }
+    });
+
+    // Fonction pour sauvegarder l'annonce dans localStorage
+    function saveAdToLocalStorage(title, url) {
+      // Récupérer les publicités existantes
+      let ads = JSON.parse(localStorage.getItem("ads")) || [];
+
+      // Ajouter la nouvelle publicité
+      ads.push({ title, url });
+
+      // Sauvegarder les publicités mises à jour
+      localStorage.setItem("ads", JSON.stringify(ads));
+
+      // Confirmer l'ajout à l'utilisateur
+      alert("Ad added successfully!");
+
+      // Réinitialiser le formulaire
+      adForm.reset();
+    }
+  </script>
+</body>
+</html>
+
