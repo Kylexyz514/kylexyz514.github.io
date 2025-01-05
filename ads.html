@@ -27,18 +27,14 @@
   </footer>
 
   <script>
-    // Liste de publicités initiales (à remplir avec tes liens)
-    const ads = [
-      { title: "Ad 1", url: "https://www.example1.com" },
-      { title: "Ad 2", url: "https://www.example2.com" },
-    ];
-
+    // Récupérer les publicités du localStorage
+    const ads = JSON.parse(localStorage.getItem("ads")) || [];
     const adsList = document.getElementById("adsList");
 
-    // Afficher les publicités
-    ads.forEach((ad) => {
+    // Afficher les publicités dans la liste
+    ads.forEach((ad, index) => {
       const li = document.createElement("li");
-      li.innerHTML = `<a href="${ad.url}" target="_blank">${ad.title}</a>`;
+      li.innerHTML = `<strong>${index + 1}.</strong> <a href="${ad.url}" target="_blank">${ad.title}</a>`;
       adsList.appendChild(li);
     });
   </script>
