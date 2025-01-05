@@ -3,43 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AdSphere</title>
+  <title>Ma Plateforme Publicitaire</title>
+  <!-- Lien vers le fichier CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Script pour la redirection -->
-  <script>
-    // Vérifier si l'utilisateur est sur le lien racine
-    if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
-      // Rediriger vers Adsviewer
-      window.location.href = "https://kylexyz514.github.io/Adsviewer/";
-    }
-  </script>
-
-  <!-- Contenu principal -->
+  <!-- Menu de navigation -->
   <nav>
-    <a href="index.html">Home</a>
-    <a href="ads.html">Ads Library</a>
+    <a href="index.html">Accueil</a>
+    <a href="about.html">À propos</a>
     <a href="contact.html">Contact</a>
   </nav>
-  <main>
-    <h1>Welcome to AdSphere</h1>
-    <p>Your ultimate platform for managing and hosting ads effectively.</p>
 
-    <button onclick="showLibraryInfo()">Learn More</button>
-    <div id="info" style="display:none;">
-      <p>AdSphere offers a dedicated library to organize your ads efficiently. Explore our platform for seamless ad management!</p>
+  <!-- Contenu principal -->
+  <main>
+    <h1>Bienvenue sur Ma Plateforme Publicitaire</h1>
+    <p>Ceci est une plateforme innovante pour héberger et gérer des publicités.</p>
+
+    <!-- Bouton interactif -->
+    <button onclick="toggleContent()">Afficher plus</button>
+    <div id="content" style="display:none;">
+      <p>Voici des détails supplémentaires sur notre plateforme :</p>
+      <ul>
+        <li>Nous collaborons avec des géants comme Google Ads et Facebook Ads.</li>
+        <li>Notre plateforme offre une visibilité optimale pour vos campagnes.</li>
+        <li>Contactez-nous pour plus d'informations !</li>
+      </ul>
     </div>
   </main>
+
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 AdSphere. All rights reserved.</p>
+    <p>&copy; 2025 - Ma Plateforme Publicitaire. Tous droits réservés.</p>
   </footer>
 
+  <!-- Script JavaScript pour le bouton interactif -->
   <script>
-    function showLibraryInfo() {
-      const info = document.getElementById('info');
-      info.style.display = info.style.display === 'none' ? 'block' : 'none';
+    function toggleContent() {
+      const content = document.getElementById('content');
+      if (content.style.display === 'none') {
+        content.style.display = 'block';
+      } else {
+        content.style.display = 'none';
+      }
     }
   </script>
 </body>
-</html>
+</html
