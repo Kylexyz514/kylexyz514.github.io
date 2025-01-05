@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ads Library - AdSphere</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="ads.html">Ads Library</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <h1>Ads Library</h1>
+    <p>Here you can organize your ads. Add new ads using the form below.</p>
+
+    <!-- Formulaire pour ajouter une pub -->
+    <form id="adsForm">
+      <label for="adTitle">Ad Title:</label>
+      <input type="text" id="adTitle" name="adTitle" required>
+      <label for="adDescription">Ad Description:</label>
+      <textarea id="adDescription" name="adDescription" required></textarea>
+      <button type="submit">Add Ad</button>
+    </form>
+
+    <!-- Liste des publicités -->
+    <h2>Your Ads</h2>
+    <ul id="adsList"></ul>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 AdSphere. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const adsForm = document.getElementById('adsForm');
+    const adsList = document.getElementById('adsList');
+
+    adsForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const title = document.getElementById('adTitle').value;
+      const description = document.getElementById('adDescription').value;
+
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${title}</strong>: ${description}`;
+
+      adsList.appendChild(li);
+
+      adsForm.reset();
+    });
+  </script>
+</body>
+</html>
+
