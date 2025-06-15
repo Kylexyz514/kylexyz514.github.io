@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MindBoost Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+
+  <div class="max-w-xl mx-auto bg-white shadow-md rounded-xl p-6">
+    <h1 class="text-2xl font-bold mb-4 text-center text-green-700">🛠️ MindBoost Admin Panel</h1>
+
+    <form id="articleForm" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium">Titre de l’article</label>
+        <input type="text" id="title" class="w-full p-2 border rounded" required>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium">Description</label>
+        <input type="text" id="description" class="w-full p-2 border rounded" required>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium">Lien de l’article</label>
+        <input type="url" id="link" class="w-full p-2 border rounded" required>
+      </div>
+
+      <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Ajouter l’article</button>
+    </form>
+
+    <hr class="my-6">
+
+    <h2 class="text-xl font-semibold mb-2">Articles existants</h2>
+    <ul id="articleList" class="space-y-2"></ul>
+  </div>
+
+  <script>
+    const form = document.getElementById('articleForm');
+    const list = document.getElementById('articleList');
+
+    function loadArticles() {
+      list.innerHTML = '';
+      const articles = JSON.parse(localStorage.getItem('articles') || '[]');
+      articles.forEach((a, index) => {
+        const li = document.createElement('li');
+        li.className = "bg-gray-200 p-2 rounded flex justify-between items-center";
+        li.innerHTML = `
+          <div>
+            <strong>${a.title}</strong> - <a href="${a.link}" class="text-blue-600 underline" target="_blank">Voir</a>
+            <p class="text-sm">${a.description}</p>
+          </div>
+          <button onclick="deleteArticle(${index})" class="text-red-600 hover:underline">Supprimer</button>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    function deleteArticle(index) {
+      const articles = JSON.parse(localStorage.getItem('articles') || '[]');
+      articles.splice(index, 1);
+      localStorage.setItem('articles', JSON.stringify(articles));
+      loadArticles();
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const title = document.getElementById('title').value;
+      const description = document.getElementById('description').value;
+      const link = document.getElementById('link').value;
+      const articles = JSON.parse(localStorage.getItem('articles') || '[]');
+      articles.push({ title, description, link });
+      localStorage.setItem('articles', JSON.stringify(articles));
+      form.reset();
+      loadArticles();
+    });
+
+    loadArticles();
+  </script>
+</body>
+</html>
