@@ -1,119 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Daily Productivity Tips – Boost your habits and mindset.">
-    <title>Daily Productivity Tips</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        header {
-            background-color: #1a1a1a;
-            color: white;
-            text-align: center;
-            padding: 40px 0 25px;
-        }
-        header h1 {
-            margin: 0 0 15px;
-            font-size: 2.2em;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .hero {
-            background: url('banner.jpg') no-repeat center center/cover;
-            height: 260px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-shadow: 1px 1px 5px #000;
-            font-size: 1.9em;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-        main {
-            padding: 40px 0;
-        }
-        .articles article {
-            background: #fff;
-            margin-bottom: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .read-more {
-            display: inline-block;
-            margin-top: 10px;
-            color: #007bff;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        footer {
-            background: #1a1a1a;
-            color: #ccc;
-            padding: 25px 0;
-            text-align: center;
-            font-size: 0.9em;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Daily Productivity Tips – Améliorez vos habitudes et votre bien‑être.">
+  <title>Daily Productivity Tips</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="script.js" defer></script>
+  <style>
+    /* Typographie & couleurs */
+    :root {
+      --primary: #2c3e50;
+      --accent: #3498db;
+      --bg: #f4f6f8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--primary);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 0 20px;
+    }
+    header {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 30px 0;
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+    }
+    nav a {
+      color: #ecf0f1;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .hero {
+      background: url('banner.jpg') center/cover no-repeat;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+      margin-bottom: 30px;
+    }
+    main { padding-bottom: 40px; }
+    .article {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin-bottom: 25px;
+      padding: 20px;
+    }
+    .article h2 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .read-more-btn {
+      margin-top: 10px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+    .read-more-btn:hover {
+      background: #2980b9;
+    }
+    .full-content {
+      display: none;
+      margin-top: 12px;
+      white-space: pre-wrap;
+      color: #444;
+    }
+    footer {
+      background: var(--primary);
+      color: #ecf0f1;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Daily Productivity Tips</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <section class="hero">
-        <div class="container">
-            Elevate Your Habits. Master Your Mindset.
-        </div>
+  <header>
+    <div class="container">
+      <h1>Daily Productivity Tips</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      Élevez vos habitudes. Maîtrisez votre mental.
+    </div>
+  </section>
+
+  <main class="container">
+    <section id="articles">
+      <!-- Articles injectés via script.js -->
     </section>
+  </main>
 
-    <main>
-        <div class="container">
-            <section class="articles" id="articles">
-                <!-- Articles will be inserted dynamically -->
-            </section>
-        </div>
-    </main>
+  <footer>
+    <div class="container">
+      &copy; 2025 Daily Productivity Tips. All rights reserved.
+    </div>
+  </footer>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Daily Productivity Tips. All rights reserved.</p>
-        </div>
-    </footer>
 </body>
 </html>
