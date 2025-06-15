@@ -6,27 +6,22 @@
     <meta name="description" content="Learn productivity hacks, tips, and tricks to improve your daily life.">
     <title>Daily Productivity Tips</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer>
-        document.addEventListener("DOMContentLoaded", function () {
-            const articles = JSON.parse(localStorage.getItem("articles") || "[]");
-            const container = document.getElementById("articleContainer");
-
-            if (articles.length === 0) {
-                container.innerHTML = "<p>No articles yet. Stay tuned!</p>";
-                return;
-            }
-
-            articles.forEach(article => {
-                const div = document.createElement("article");
-                div.innerHTML = `
-                    <h3>${article.title}</h3>
-                    <p>${article.description}</p>
-                    <a href="${article.link}" class="read-more" target="_blank">Read More</a>
-                `;
-                container.appendChild(div);
-            });
-        });
-    </script>
+    <script src="script.js" defer></script>
+    <style>
+        .full-content {
+            display: none;
+            margin-top: 10px;
+        }
+        .read-more-btn {
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -38,22 +33,20 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="admin.html">Admin</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-
     <main>
         <div class="container">
             <h2>Welcome to Daily Productivity Tips</h2>
             <p>Your ultimate resource for improving your daily habits and achieving your goals.</p>
-
-            <section class="articles" id="articleContainer">
-                <!-- Les articles dynamiques seront injectés ici -->
+            <section class="articles">
+                <!-- Articles seront insérés ici -->
             </section>
         </div>
     </main>
-
     <footer>
         <div class="container">
             <p>&copy; 2025 Daily Productivity Tips. All rights reserved.</p>
