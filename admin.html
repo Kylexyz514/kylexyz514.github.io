@@ -1,81 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Daily Productivity Tips</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            padding: 20px;
-            max-width: 600px;
-            margin: auto;
-        }
-        h1 {
-            text-align: center;
-        }
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-        }
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .success {
-            color: green;
-            margin-top: 15px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Daily Productivity Tips</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .success {
+      color: green;
+      margin-top: 15px;
+    }
+
+    .article {
+      background: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 15px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .article-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .article-content {
+      white-space: pre-wrap;
+      background: #f9f9f9;
+      padding: 10px;
+      border: 1px dashed #ccc;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Admin Panel</h1>
+  <h1>Admin Panel</h1>
 
-    <label for="title">Title</label>
-    <input type="text" id="title" placeholder="Enter article title">
+  <div id="login-section">
+    <label for="password">Enter Admin Password:</label>
+    <input type="password" id="password" />
+    <button onclick="checkPassword()">Login</button>
+  </div>
 
-    <label for="description">Description</label>
-    <textarea id="description" rows="4" placeholder="Enter short description..."></textarea>
+  <div id="admin-section" style="display: none;">
+    <label for="title">📝 Article Title</label>
+    <input type="text" id="title" placeholder="e.g. How to Wake Up Early" />
 
-    <label for="link">Link (URL to full article)</label>
-    <input type="url" id="link" placeholder="https://...">
+    <label for="content">📄 Full Article Content (HTML or Text)</label>
+    <textarea id="content" rows="10" placeholder="Paste the full article here..."></textarea>
 
-    <button onclick="addArticle()">Add Article</button>
+    <button onclick="addArticle()">💾 Add Article</button>
 
     <div class="success" id="message"></div>
 
-    <script>
-        function addArticle() {
-            const title = document.getElementById("title").value;
-            const description = document.getElementById("description").value;
-            const link = document.getElementById("link").value;
+    <h2>📚 All Articles</h2>
+    <div id="articleList"></div>
+  </div>
 
-            if (!title || !description || !link) {
-                alert("Please fill in all fields.");
-                return;
-            }
+  <script>
+    const ADMIN_PASSWORD = "secret123";
 
-            const articles = JSON.parse(localStorage.getItem("articles") || "[]");
-            articles.unshift({ title, description, link });
-            localStorage.setItem("articles", JSON.stringify(articles));
+    function checkPassword() {
+      const pwd = document.getElementById("password").value;
+      if (pwd === ADMIN_PASSWORD) {
+        document.getElementById("login-section").style.display = "none";
+        document.getElementById("admin-section").style.display = "block";
+        showArticles();
+      } else {
+        alert("Wrong password!");
+      }
+    }
 
-            document.getElementById("message").textContent = "✅ Article added successfully!";
-            document.getElementById("title").value = "";
-            document.getElementById("description").value = "";
-            document.getElementById("link").value = "";
-        }
-    </script>
+    function addArticle() {
+      const title = document.getElementById("title").value;
+      const content = document.getElementById("content").value;
+
+      if (!title || !content) {
+        alert("Please fill in both fields.");
+        return;
+      }
+
+      const articles = JSON.parse(localStorage.getItem("articles") || "[]");
+      articles.unshift({ title, content });
+      localStorage.setItem("articles", JSON.stringify(articles));
+
+      document.getElementById("message").textContent = "✅ Article saved!";
+      document.getElementById("title").value = "";
+      document.getElementById("content").value = "";
+      showArticles();
+    }
+
+    function deleteArticle(index) {
+      const articles = JSON.parse(localStorage.getItem("articles") || "[]");
+      articles.splice(index, 1);
+      localStorage.setItem("articles", JSON.stringify(articles));
+      showArticles();
+    }
+
+    function showArticles() {
+      const articles = JSON.parse(localStorage.getItem("articles") || "[]");
+      const list = document.getElementById("articleList");
+      list.innerHTML = "";
+      articles.forEach((a, i) => {
+        list.innerHTML += `
+          <div class="article">
+            <div class="article-title">${a.title}</div>
+            <div class="article-content">${a.content}</div>
+            <button onclick="deleteArticle(${i})">🗑 Delete</button>
+          </div>
+        `;
+      });
+    }
+  </script>
 </body>
 </html>
