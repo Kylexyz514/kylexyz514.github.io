@@ -1,55 +1,63 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn productivity hacks, tips, and tricks to improve your daily life.">
-    <title>Daily Productivity Tips</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn productivity hacks, tips, and tricks to improve your daily life.">
+    <title>Daily Productivity Tips</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function () {
+            const articles = JSON.parse(localStorage.getItem("articles") || "[]");
+            const container = document.getElementById("articleContainer");
+
+            if (articles.length === 0) {
+                container.innerHTML = "<p>No articles yet. Stay tuned!</p>";
+                return;
+            }
+
+            articles.forEach(article => {
+                const div = document.createElement("article");
+                div.innerHTML = `
+                    <h3>${article.title}</h3>
+                    <p>${article.description}</p>
+                    <a href="${article.link}" class="read-more" target="_blank">Read More</a>
+                `;
+                container.appendChild(div);
+            });
+        });
+    </script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Daily Productivity Tips</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <main>
-        <div class="container">
-            <h2>Welcome to Daily Productivity Tips</h2>
-            <p>Your ultimate resource for improving your daily habits and achieving your goals.</p>
-            <section class="articles">
-                <article>
-                    <h3>5 Morning Habits for a More Productive Day</h3>
-                    <p>Start your day with these five habits to maximize productivity...</p>
-                    <a href="article1.html" class="read-more">Read More</a>
-                </article>
-                <article>
-                    <h3>Top 10 Apps to Organize Your Life</h3>
-                    <p>These apps can transform your daily planning and help you stay organized...</p>
-                    <a href="article2.html" class="read-more">Read More</a>
-                </article>
-                <article>
-                    <h3>How to Beat Procrastination in 3 Steps</h3>
-                    <p>Procrastination can be a challenge, but these tips can help you overcome it...</p>
-                    <a href="article3.html" class="read-more">Read More</a>
-                </article>
-            </section>
-        </div>
-    </main>
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Daily Productivity Tips. All rights reserved.</p>
-        </div>
-    </footer>
+    <header>
+        <div class="container">
+            <h1>Daily Productivity Tips</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Welcome to Daily Productivity Tips</h2>
+            <p>Your ultimate resource for improving your daily habits and achieving your goals.</p>
+
+            <section class="articles" id="articleContainer">
+                <!-- Les articles dynamiques seront injectés ici -->
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Daily Productivity Tips. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
